@@ -1,0 +1,37 @@
+namespace softuni
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack<int> stack = new Stack<int>(Console.ReadLine().Split().Select(int.Parse).ToList());
+            var comm=Console.ReadLine().ToLower();
+            while (comm!="end")
+            {
+                var splitted=comm.Split();
+                if (splitted[0]=="add")
+                {
+                    int num1 = int.Parse(splitted[1]);
+                    int num2 = int.Parse(splitted[2]);
+                    stack.Push(num1);
+                    stack.Push(num2);
+                }
+                if (splitted[0] == "remove")
+                {
+                    int count = int.Parse(splitted[1]);
+                    if (count<=stack.Count)
+                    {
+                        for (int i = 0; i < count; i++)
+                        {
+                            stack.Pop();
+                        }
+                    }
+                }
+                comm = Console.ReadLine().ToLower();
+            }
+            Console.WriteLine("Sum: " +stack.Sum());
+
+
+        }
+    }
+}

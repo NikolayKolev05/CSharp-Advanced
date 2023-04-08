@@ -1,0 +1,36 @@
+using System.Collections.Generic;
+namespace softuni
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int toPass = int.Parse(Console.ReadLine());
+            string comm = Console.ReadLine();
+            Queue<string> queue = new Queue<string>();
+            int passed = 0;
+            while (comm!="end")
+            {
+                if (comm=="green")
+                {
+                    for (int i = 0; i < toPass; i++)
+                    {
+                        if (queue.Count>0)
+                        {
+                            string car = queue.Dequeue();
+                            Console.WriteLine($"{queue} passed!");
+                            passed++;
+                        }
+                    }
+                }
+                else
+                {
+                    queue.Enqueue(comm);
+                }
+                comm=Console.ReadLine();
+            }
+            Console.WriteLine($"{queue} cars passed the crossroads.");
+
+        }
+    }
+}

@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+namespace softuni
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] expression = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            Stack<string> stack = new Stack<string>(expression.Reverse());
+            while (stack.Count > 1)
+            {
+                int num1=int.Parse(stack.Pop());
+                char op = char.Parse(stack.Pop());
+                int num2=int.Parse(stack.Pop());
+                
+                switch (op)
+                {
+                    case '+':
+                        stack.Push((num1 + num2).ToString());
+                        break;
+                    case '-':
+                        stack.Push((num1 - num2).ToString()); break;
+                    
+                }
+            }
+            Console.WriteLine(stack.Pop());
+        }
+    }
+}

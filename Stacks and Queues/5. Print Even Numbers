@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+namespace softuni
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            Queue<int> queue = new Queue<int>(arr);
+            for (int i = 0; i < queue.Count; i++)
+            {
+                int num = queue.Peek();
+                if (num%2!=0)
+                {
+                    queue.Dequeue();
+                    i--;
+                }
+                else
+                {
+                    queue.Dequeue();
+                    queue.Enqueue(num);
+                }
+            }
+            Console.WriteLine(string.Join(", ",queue));
+        }
+    }
+}
